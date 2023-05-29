@@ -1,3 +1,5 @@
+# In Python, the pyclustering library provides various clustering algorithms, 
+# including bsas, which you can use to perform clustering analysis on your data
 from pyclustering.cluster.bsas import bsas
 import numpy as np
 import cv2

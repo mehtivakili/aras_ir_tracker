@@ -15,4 +15,4 @@
   ext_params_path: 'sample_dataset/ext_params_after_ba.pckl'
   record: false
   path: 'dataset_tmp_dir'
-  print_markers: ture
+  print_markers: true

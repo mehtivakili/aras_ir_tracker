@@ -5,8 +5,8 @@
     - ' '    
     - ' '
   cameras:
-    - '0-8'
-    - '0-2'
+    - '0-1'
+    - '0-3'
   calib_files:
     - 'params/intrinsics/5002_0.yaml'    
     - 'params/intrinsics/5002_1.yaml'
