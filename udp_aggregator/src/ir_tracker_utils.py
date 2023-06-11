@@ -96,7 +96,7 @@ class undistrodMarkers:
         self.K = np.array(calib['camera_matrix']['data']).reshape(calib['camera_matrix']['rows'],calib['camera_matrix']['cols'])
         self.D = np.array(calib['distortion_coefficients']['data']).reshape(-1, 5)
         self.P = np.array(calib['projection_matrix']['data']).reshape(3, 4)
-        #elf.R = np.array(calib['rectification_matrix']['data']).reshape(3, 3)
+        #self.R = np.array(calib['rectification_matrix']['data']).reshape(3, 3)
 #        self.img_width = calib['image_width']
 #        self.img_height = calib['image_height']
     def process(self,points):

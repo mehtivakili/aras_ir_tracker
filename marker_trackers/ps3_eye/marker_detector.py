@@ -1,19 +1,23 @@
-# In Python, the pyclustering library provides various clustering algorithms, 
-# including bsas, which you can use to perform clustering analysis on your data
+#In Python, the pyclustering library provides various clustering algorithms, 
+#including bsas, which you can use to perform clustering analysis on your data
 from pyclustering.cluster.bsas import bsas
 import numpy as np
+# openCV for reading videos and images
 import cv2
 import yaml
 import pickle
-from pyclustering.cluster.bsas import bsas
+#The dataclass decorator simplifies the process of creating classes that 
+#primarily hold data, by automatically generating common methods for you.
+#The dataclasses module provides a convenient way to define classes with automatically
+#generated special methods, such as __init__, __repr__, and __eq__, based on the class attributes.
 from dataclasses import dataclass
 from src.tracker_utils import *
 from src.camera_utils import *
 from src.telemetry_utils import *
 import argparse
-import yaml
 
-#Blob detector paramters for marker extraction
+
+#Blob detector paramters for marker extraction#
 @dataclass
 class paramclass():
     max_markers: int=1
@@ -34,11 +38,12 @@ class paramclass():
 detector_params=paramclass()
 
 if __name__=='__main__':
-
+    #if the user runs the program from the command line and provides a configuration file as a positional argument,
+    #it will be stored in the args.config_file attribute.
     parser = argparse.ArgumentParser(description = 'A prgram to track infered markers in images and sending them to a server.')
     parser.add_argument('config_file', type=str, help='The path to the YAML config file')
     args = parser.parse_args()
-    # Extract the configuration paramters from the YAML file
+    # Extract the configuration paramters from the YAML file #
     with open(args.config_file,'r') as f:
         configs = yaml.safe_load(f)
 
