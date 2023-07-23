@@ -26,7 +26,7 @@ class paramclass():
     minThreshold: int= 50
     maxThreshold: int= 255
     filterByArea: bool= True
-    minArea = 0
+    minArea = 0.00001
     filterByCircularity: bool= True
     minCircularity: float= 0.3
     filterByConvexity: bool= True
