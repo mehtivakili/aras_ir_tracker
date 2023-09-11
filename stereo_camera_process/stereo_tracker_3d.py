@@ -60,6 +60,7 @@ def callback(reception_stamp, data):
                     print('---------------------------')
                     #Print the reprojection error as a measure of the reconstruction quality
                     print(f'{data[0]}, {e1:1.2f}, {e2:1.2f}, [{landmarks[0]:2.3f}, {landmarks[1]:2.3f}, {landmarks[2]:2.3f}]')
+                    print(landmarks.squeeze()[0:3])
                     print('---------------------------')
 
                 # If required, record the marker locations into the recorder class
