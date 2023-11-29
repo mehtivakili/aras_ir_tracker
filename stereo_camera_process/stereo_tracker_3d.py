@@ -26,8 +26,7 @@ class recorderClass():
         timetup = time.localtime()
         stamp=time.strftime('%Y-%m-%d-%H:%M:%S', timetup)
         with open(os.path.join(self.path, f'recorded-{stamp}.pckl'), 'wb') as f:
-            pickle.dump(self.data,f)
-            
+            pickle.dump(self.data,f)   
 
 # This callback is called by the RX functions of the telemetry class on the reception of new UDP packets from the UDP marker publisher nodes
 def callback(reception_stamp, data):
@@ -51,9 +50,10 @@ def callback(reception_stamp, data):
                 e1 = np.linalg.norm(x1_undist-x1_proj)
                 e2 = np.linalg.norm(x2_undist-x2_proj)
                 #Transmit 3D position of the landmark to the Matlab
-                telemetry_object.transmit_matlab(landmarks.squeeze()[0:3].tolist() + [e1, e2], 
-                                                 configs['matlab_ip'], 
-                                                 configs['matlab_port'])
+                if configs['transmit_matlab']:
+                    telemetry_object.transmit_matlab(landmarks.squeeze()[0:3].tolist() + [e1, e2], 
+                                                    configs['matlab_ip'], 
+                                                    configs['matlab_port'])
 
                 # Print received data if required
                 if configs['print_markers']:
@@ -115,6 +115,7 @@ if __name__=='__main__':
     # To handle the data reception of each telemetry object create a thread and hand over the callback function 
     # that should be called on the reception of each packet
     rx_threads.append(threading.Thread(target=telemetry_object.start_rx, args =(callback,)))
+    
     # Handle Ctrl-C interrupt correctly by calling a function to clean up the system and story the data
     signal.signal(signal.SIGINT, termination_handling)
     # If required, we can record the received data into a file at the end of the node execution
